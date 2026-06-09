@@ -3,23 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cleaning Gallery | SureSpark Cleaning Nigeria</title>
-  <meta name="description" content="View SureSpark Cleaning gallery, before and after photos, cleaning site posts, equipment in use and car cleaning results." />
+  <title>Gallery | SureSpark Cleaning Nigeria</title>
+  <meta name="description" content="View SureSpark Cleaning gallery, before and after cleaning results, equipment photos, home cleaning, office cleaning and car cleaning work." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Favicon & Social Preview -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+  <meta property="og:title" content="SureSpark Cleaning | Professional Cleaning Services in Nigeria" />
+  <meta property="og:description" content="Home, office, deep cleaning, and car cleaning services delivered to your location across Nigeria." />
+  <meta property="og:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
+  <meta property="og:url" content="https://www.suresparkcleaning.com/gallery.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SureSpark Cleaning | Professional Cleaning Services in Nigeria" />
+  <meta name="twitter:description" content="Home, office, deep cleaning, and car cleaning services delivered to your location across Nigeria." />
+  <meta name="twitter:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
-  <a class="whatsapp-float" data-whatsapp="quote" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="whatsapp-float" data-whatsapp="quote" target="_blank" aria-label="Chat with SureSpark Cleaning on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <header class="header">
     <div class="container nav-wrap">
       <a href="index.html" class="logo">
-        <div class="logo-mark"><i class="fa-solid fa-sparkles"></i></div>
-        <div><span class="logo-main">SureSpark</span><span class="logo-sub">Cleaning</span></div>
+        <img class="logo-img" src="assets/images/logo.png" alt="SureSpark Cleaning logo">
       </a>
-      <button class="menu-btn" data-menu-btn><i class="fa-solid fa-bars"></i></button>
+
+      <button class="menu-btn" data-menu-btn aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
       <nav class="nav" data-nav>
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
@@ -32,17 +53,21 @@
     </div>
   </header>
 
-  <main>
-    <section class="page-hero">
+  <main class="gallery-page">
+    <section class="page-hero gallery-hero">
       <div class="container">
         <span class="eyebrow">Cleaning site posts</span>
         <h1>Gallery, before/after results and equipment in use</h1>
-        <p class="lead">This page is for real cleaning site photos. Later, Emmanuel can upload new gallery posts using Sanity.</p>
+        <p class="lead">
+          A preview of SureSpark Cleaning work, equipment, and cleaning results.
+          Real client photos can be uploaded here later through Sanity.
+        </p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section gallery-section-clean">
       <div class="container">
+
         <div class="gallery-filter">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="home">Home Cleaning</button>
@@ -52,59 +77,125 @@
           <button class="filter-btn" data-filter="before-after">Before & After</button>
         </div>
 
-        <div class="grid grid-3">
-          <article class="card image-card" data-category="home">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80" alt="Home cleaning">
-            <div class="card-body"><h3>Home Cleaning</h3><p>Replace with real home cleaning site photo.</p></div>
-          </article>
+        <div class="grid grid-3 gallery-grid">
 
-          <article class="card image-card" data-category="office">
-            <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=900&q=80" alt="Office cleaning">
-            <div class="card-body"><h3>Office Cleaning</h3><p>Replace with real office cleaning site photo.</p></div>
-          </article>
-
-          <article class="card image-card" data-category="car">
-            <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=900&q=80" alt="Car cleaning">
-            <div class="card-body"><h3>Car Cleaning</h3><p>Replace with real car cleaning photo.</p></div>
-          </article>
-
-          <article class="card image-card" data-category="equipment">
-            <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=900&q=80" alt="Equipment in use">
-            <div class="card-body"><h3>Equipment in Use</h3><p>Show equipment photos and explain usage.</p></div>
-          </article>
-
-          <article class="card image-card" data-category="before-after">
-            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=900&q=80" alt="Before and after cleaning">
-            <div class="card-body"><h3>Before & After</h3><p>Use real before/after cleaning result photos.</p></div>
-          </article>
-
-          <article class="card image-card" data-category="home">
-            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=900&q=80" alt="Deep cleaning result">
-            <div class="card-body"><h3>Deep Cleaning Result</h3><p>Post cleaning site pictures from completed jobs.</p></div>
-          </article>
-        </div>
-
-        <div class="section" style="padding-bottom: 0;">
-          <div class="band">
-            <div>
-              <h2>Want to show your cleaning site photos here?</h2>
-              <p>Use Sanity later to upload photos, before/after images, equipment images, and video links without editing code.</p>
+          <article class="card image-card gallery-card gallery-result-card" data-category="before-after">
+            <img src="assets/images/gallery/rug-after-cleaning.png" alt="Rug cleaning result after deep cleaning">
+            <div class="card-body">
+              <span class="gallery-card-tag">Before & After Result</span>
+              <h3>Rug Cleaning Result</h3>
+              <p>A real before-and-after style result showing how deep cleaning can refresh the rug and improve its overall appearance.</p>
             </div>
-            <a class="btn btn-primary" data-whatsapp="quote" target="_blank">Send Photos on WhatsApp</a>
-          </div>
+          </article>
+
+          <article class="card image-card gallery-card" data-category="equipment">
+            <img src="assets/images/equipment/window-cleaning-kit.png" alt="Window cleaning kit">
+            <div class="card-body">
+              <span class="gallery-card-tag">Equipment</span>
+              <h3>Window Cleaning Kit</h3>
+              <p>Used for windows, glass doors, mirrors and shower screens.</p>
+            </div>
+          </article>
+
+          <article class="card image-card gallery-card" data-category="equipment">
+            <img src="assets/images/equipment/pressure-washer.png" alt="Pressure washer">
+            <div class="card-body">
+              <span class="gallery-card-tag">Equipment</span>
+              <h3>Pressure Washer</h3>
+              <p>Used for outdoor surfaces, car washing, tiles and heavy dirt.</p>
+            </div>
+          </article>
+
+          <article class="card image-card gallery-card" data-category="equipment">
+            <img src="assets/images/equipment/floor-scrubber.png" alt="Electric floor scrubber">
+            <div class="card-body">
+              <span class="gallery-card-tag">Equipment</span>
+              <h3>Electric Floor Scrubber</h3>
+              <p>Used for tiled floors, bathroom floors and hard-surface scrubbing.</p>
+            </div>
+          </article>
+
+          <article class="card image-card gallery-card" data-category="home">
+            <img src="assets/images/equipment/upholstery-cleaner.png" alt="Upholstery cleaning machine">
+            <div class="card-body">
+              <span class="gallery-card-tag">Home Cleaning</span>
+              <h3>Upholstery Cleaning</h3>
+              <p>Used for sofas, rugs, carpets, chairs and fabric surfaces.</p>
+            </div>
+          </article>
+
+          <article class="card image-card gallery-card" data-category="office">
+            <img src="assets/images/equipment/mop-floor-cleaning-kit.png" alt="Mop and floor cleaning kit">
+            <div class="card-body">
+              <span class="gallery-card-tag">Office Cleaning</span>
+              <h3>Mop & Floor Cleaning Kit</h3>
+              <p>Used for home, office and indoor floor cleaning.</p>
+            </div>
+          </article>
+
+          <article class="card image-card gallery-card" data-category="car">
+            <img src="assets/images/equipment/car-wash-pressure-cleaning-kit.png" alt="Car wash cleaning kit">
+            <div class="card-body">
+              <span class="gallery-card-tag">Car Cleaning</span>
+              <h3>Car Wash Cleaning Kit</h3>
+              <p>Used for exterior washing, wheels, mats and vehicle finishing.</p>
+            </div>
+          </article>
+
         </div>
+
+        <div class="band gallery-upload-band">
+          <div>
+            <span class="eyebrow">Gallery uploads</span>
+            <h2>Want to show your cleaning site photos here?</h2>
+            <p>
+              Send real photos, before/after images, equipment photos or short video links
+              through WhatsApp. Later, this section can be managed through Sanity.
+            </p>
+          </div>
+
+          <a class="btn btn-primary" data-whatsapp="gallery" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            Send Photos on WhatsApp
+          </a>
+        </div>
+
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div><h3>SureSpark Cleaning</h3><p>Professional cleaning services in Nigeria.</p></div>
-      <div><h3>Pages</h3><a href="index.html">Home</a><a href="services.html">Services</a><a href="equipment.html">Equipment</a><a href="gallery.html">Gallery</a></div>
-      <div><h3>Company</h3><a href="reviews.html">Reviews</a><a href="about.html">About</a><a href="contact.html">Get Quote</a></div>
-      <div><h3>Contact</h3><p>+234 810 844 4009</p><p>info@suresparkcleaning.com</p></div>
+      <div>
+        <h3>SureSpark Cleaning</h3>
+        <p>Professional cleaning services in Nigeria.</p>
+      </div>
+
+      <div>
+        <h3>Pages</h3>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <a href="reviews.html">Reviews</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get Quote</a>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <p>+234 810 844 4009</p>
+        <p>info@suresparkcleaning.com</p>
+      </div>
     </div>
-    <div class="container footer-bottom"><p>© 2026 SureSpark Cleaning. Professional Cleaning Services in Nigeria.</p></div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 SureSpark Cleaning. Professional Cleaning Services in Nigeria.</p>
+    </div>
   </footer>
 
   <script src="assets/js/script.js"></script>
