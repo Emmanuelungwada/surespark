@@ -1,11 +1,43 @@
-const WHATSAPP_NUMBER = "2348108444009";
+const phoneNumber = "2348108444009";
 
-function encodedMessage(message) {
-  return encodeURIComponent(message);
-}
+const whatsappMessages = {
+  quote: `Hello SureSpark Cleaning, I need a cleaning quote.
 
-function whatsappUrl(message) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage(message)}`;
+Service needed:
+City/Area:
+Preferred date:
+Preferred time:
+Property/vehicle details:
+I will send photos/videos of the space now.`,
+
+  equipment: `Hello SureSpark Cleaning, I would like to ask about your cleaning equipment and services.
+
+Service needed:
+City/Area:
+Type of cleaning:
+Photos/videos available: Yes/No`,
+
+  gallery: `Hello SureSpark Cleaning, I want to send cleaning site photos/videos for the gallery.
+
+Photo/video type:
+Service type:
+Location:
+Notes:`,
+
+  review: `Hello SureSpark Cleaning, I would like to leave a review.
+
+My name:
+Service used:
+Rating out of 5:
+My review:
+
+Thank you.`
+};
+
+function openWhatsApp(type = "quote") {
+  const message = whatsappMessages[type] || whatsappMessages.quote;
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,59 +51,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelectorAll("[data-whatsapp]").forEach((btn) => {
-    const type = btn.getAttribute("data-whatsapp");
-
-    let message = `Hello SureSpark Cleaning, I need a cleaning quote.
-
-Service needed:
-City/Area:
-Preferred date:
-Preferred time:
-Property/vehicle details:
-I will send photos/videos of the space now.`;
-
-    if (type === "equipment") {
-      message = `Hello SureSpark Cleaning, I would like to know more about your cleaning equipment and services.
-
-Service needed:
-City/Area:
-Preferred date:
-Message:`;
-    }
-
-    btn.setAttribute("href", whatsappUrl(message));
-  });
-
-  const quoteForm = document.querySelector("#quoteForm");
-
-  if (quoteForm) {
-    quoteForm.addEventListener("submit", (e) => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const data = new FormData(quoteForm);
+      let type = btn.getAttribute("data-whatsapp");
 
-      const message = `Hello SureSpark Cleaning, I need a cleaning quote.
+      const btnText = btn.textContent.toLowerCase();
+      const pagePath = window.location.pathname.toLowerCase();
 
-Full Name: ${data.get("name") || ""}
-Phone/WhatsApp: ${data.get("phone") || ""}
-Email: ${data.get("email") || ""}
-City/Area: ${data.get("city") || ""}
-Service Type: ${data.get("service") || ""}
-Property Type: ${data.get("property") || ""}
-Preferred Date: ${data.get("date") || ""}
-Preferred Time: ${data.get("time") || ""}
+      if (
+        btnText.includes("review") ||
+        btnText.includes("leave a review") ||
+        btnText.includes("write a review") ||
+        pagePath.includes("reviews")
+      ) {
+        type = "review";
+      }
 
-Cleaning Details:
-${data.get("details") || ""}
-
-I will send photos/videos of the space now.`;
-
-      window.open(whatsappUrl(message), "_blank");
+      openWhatsApp(type);
     });
-  }
+  });
 
   const filterButtons = document.querySelectorAll("[data-filter]");
-  const galleryItems = document.querySelectorAll("[data-category]");
+  const galleryCards = document.querySelectorAll("[data-category]");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -80,13 +82,13 @@ I will send photos/videos of the space now.`;
       filterButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
 
-      galleryItems.forEach((item) => {
-        const category = item.getAttribute("data-category");
+      galleryCards.forEach((card) => {
+        const category = card.getAttribute("data-category") || "";
 
-        if (filter === "all" || category === filter) {
-          item.style.display = "";
+        if (filter === "all" || category.includes(filter)) {
+          card.style.display = "";
         } else {
-          item.style.display = "none";
+          card.style.display = "none";
         }
       });
     });
