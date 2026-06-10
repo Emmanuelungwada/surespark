@@ -47,6 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuBtn && nav) {
     menuBtn.addEventListener("click", () => {
       nav.classList.toggle("open");
+
+      const icon = menuBtn.querySelector("i");
+      if (icon) {
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-xmark");
+      }
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+
+        const icon = menuBtn.querySelector("i");
+        if (icon) {
+          icon.classList.add("fa-bars");
+          icon.classList.remove("fa-xmark");
+        }
+      });
     });
   }
 
@@ -54,8 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      let type = btn.getAttribute("data-whatsapp");
-
+      let type = btn.getAttribute("data-whatsapp") || "quote";
       const btnText = btn.textContent.toLowerCase();
       const pagePath = window.location.pathname.toLowerCase();
 
@@ -91,6 +108,30 @@ document.addEventListener("DOMContentLoaded", () => {
           card.style.display = "none";
         }
       });
+    });
+  });
+});
+
+/* Back to top button */
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTop = document.createElement("button");
+  backToTop.className = "back-to-top";
+  backToTop.setAttribute("aria-label", "Back to top");
+  backToTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+  document.body.appendChild(backToTop);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 500) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
   });
 });
