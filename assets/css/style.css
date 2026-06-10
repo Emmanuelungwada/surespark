@@ -1015,3 +1015,16 @@ html {
   position: relative;
   z-index: 1;
 }
+
+/* Footer clickable contact polish */
+.footer a[href^="tel:"],
+.footer a[href^="mailto:"] {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.footer a[href^="tel:"]:hover,
+.footer a[href^="mailto:"]:hover {
+  color: #2dd4bf;
+}
