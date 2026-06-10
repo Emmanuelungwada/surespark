@@ -1048,3 +1048,131 @@ iframe {
     line-height: 1.4 !important;
   }
 }
+
+
+/* Equipment mobile text polish */
+@media (max-width: 768px) {
+  .equipment-card ul {
+    margin-top: 8px !important;
+    padding-left: 14px !important;
+  }
+
+  .equipment-card li {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .equipment-card li:nth-child(n+3) {
+    display: none !important;
+  }
+}
+
+
+
+
+
+/* Final gallery mobile equal-card fix */
+@media (max-width: 768px) {
+  .gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    align-items: start !important;
+  }
+
+  .gallery-grid .gallery-card {
+    grid-column: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+
+  .gallery-grid .gallery-card img {
+    width: 100% !important;
+    height: 145px !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  .gallery-grid .gallery-card .card-body {
+    padding: 12px !important;
+  }
+
+  .gallery-grid .gallery-card h3 {
+    font-size: 0.88rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .gallery-grid .gallery-card p {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+  }
+
+  .gallery-upload-band {
+    margin-top: 22px !important;
+  }
+}
+
+/* FINAL GALLERY REPAIR - upload box outside grid, equal mobile cards */
+@media (max-width: 768px) {
+  .gallery-page .gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    align-items: start !important;
+  }
+
+  .gallery-page .gallery-card {
+    grid-column: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+
+  .gallery-page .gallery-card img {
+    width: 100% !important;
+    height: 145px !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  .gallery-page .gallery-card .card-body {
+    padding: 12px !important;
+  }
+
+  .gallery-page .gallery-card h3 {
+    font-size: 0.88rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .gallery-page .gallery-card p {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+  }
+
+  .gallery-page .gallery-upload-band {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    margin-top: 28px !important;
+    width: 100% !important;
+  }
+}
+
+/* Desktop gallery upload spacing fix only */
+@media (min-width: 769px) {
+  .gallery-page .gallery-upload-band {
+    margin-top: 24px !important;
+  }
+}
