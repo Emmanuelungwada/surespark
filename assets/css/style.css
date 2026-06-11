@@ -1176,3 +1176,32 @@ iframe {
     margin-top: 24px !important;
   }
 }
+
+/* Footer credit */
+.footer-credit {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.footer-credit a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
+}
+
+/* Keep footer developer credit in one line */
+.footer-credit {
+  display: block;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.footer-credit a {
+  display: inline;
+}
