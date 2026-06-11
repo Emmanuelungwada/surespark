@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Submit a Review | SureSpark Cleaning</title>
+  <meta name="description" content="Submit your review for SureSpark Cleaning professional cleaning services." />
+
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+
+  <meta property="og:title" content="Submit a Review | SureSpark Cleaning" />
+  <meta property="og:description" content="Share your experience with SureSpark Cleaning." />
+  <meta property="og:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
+  <meta property="og:url" content="https://www.suresparkcleaning.com/submit-review.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="contact-page">
+  <header class="header">
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html">
+        <img class="logo-img" src="assets/images/logo.png" alt="SureSpark Cleaning Logo" />
+      </a>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="gallery.html">Gallery</a>
+        <a class="active" href="reviews.html">Reviews</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get Quote</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow"><i class="fa-solid fa-star"></i> Customer Review</span>
+        <h1>Share your experience</h1>
+        <p class="lead">Tell us about your cleaning service experience. Reviews are checked by our team before being published on the website.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid-2">
+        <div class="card">
+          <h2>Submit your review</h2>
+          <p class="lead">Your feedback helps SureSpark Cleaning improve and helps future customers feel confident.</p>
+
+          <form class="form" id="reviewForm">
+            <div>
+              <label for="customerName">Your Name</label>
+              <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required />
+            </div>
+
+            <div>
+              <label for="serviceUsed">Service Used</label>
+              <select id="serviceUsed" name="serviceUsed" required>
+                <option value="">Select service</option>
+                <option value="Residential Cleaning">Residential Cleaning</option>
+                <option value="Office Cleaning">Office Cleaning</option>
+                <option value="Deep Cleaning">Deep Cleaning</option>
+                <option value="Car Cleaning">Car Cleaning</option>
+                <option value="Move-in / Move-out Cleaning">Move-in / Move-out Cleaning</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="rating">Rating</label>
+              <select id="rating" name="rating" required>
+                <option value="5">★★★★★ Excellent</option>
+                <option value="4">★★★★ Very Good</option>
+                <option value="3">★★★ Good</option>
+                <option value="2">★★ Fair</option>
+                <option value="1">★ Poor</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" placeholder="Example: Lagos, Abuja" required />
+            </div>
+
+            <div>
+              <label for="reviewText">Your Review</label>
+              <textarea id="reviewText" name="reviewText" placeholder="Write your review here..." required></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit" id="submitReviewBtn">
+              <i class="fa-solid fa-paper-plane"></i>
+              Submit Review
+            </button>
+
+            <p class="form-note" id="reviewFormMessage">
+              Your review will not appear immediately. It will be checked before publishing.
+            </p>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <h3>How review approval works</h3>
+          <p>After you submit your review, SureSpark Cleaning will receive it for approval.</p>
+          <ul style="margin: 16px 0 0 18px; color: var(--muted);">
+            <li>The review is submitted as pending.</li>
+            <li>The admin checks the review inside Sanity CMS.</li>
+            <li>Only approved reviews appear on the website.</li>
+          </ul>
+
+          <div class="notice" style="margin-top: 22px;">
+            Reviews are used to improve service quality and build customer trust.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>SureSpark Cleaning</h3>
+          <p>Professional cleaning services in Nigeria.</p>
+        </div>
+        <div>
+          <h3>Pages</h3>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="equipment.html">Equipment</a>
+          <a href="gallery.html">Gallery</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="reviews.html">Reviews</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Get Quote</a>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <a href="tel:+2348108444009"><i class="fa-solid fa-phone"></i> +234 810 844 4009</a>
+          <a href="mailto:info@suresparkcleaning.com"><i class="fa-solid fa-envelope"></i> info@suresparkcleaning.com</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SureSpark Cleaning. Professional Cleaning Services in Nigeria.</p>
+        <p class="footer-credit">Designed &amp; developed by <a href="https://anwarhegazy-porfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Anwar Hegazy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/2348108444009" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="assets/js/script.js"></script>
+
+  <script>
+    const reviewForm = document.getElementById("reviewForm");
+    const submitReviewBtn = document.getElementById("submitReviewBtn");
+    const reviewFormMessage = document.getElementById("reviewFormMessage");
+
+    reviewForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      submitReviewBtn.disabled = true;
+      submitReviewBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+      reviewFormMessage.textContent = "Submitting your review...";
+
+      const payload = {
+        customerName: document.getElementById("customerName").value.trim(),
+        serviceUsed: document.getElementById("serviceUsed").value,
+        rating: Number(document.getElementById("rating").value),
+        location: document.getElementById("location").value.trim(),
+        reviewText: document.getElementById("reviewText").value.trim()
+      };
+
+      try {
+        const response = await fetch("/api/submit-review", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Submission failed");
+        }
+
+        reviewForm.reset();
+        reviewFormMessage.textContent = "Thank you. Your review has been submitted and is waiting for approval.";
+        submitReviewBtn.innerHTML = '<i class="fa-solid fa-check"></i> Review Submitted';
+      } catch (error) {
+        reviewFormMessage.textContent = "Sorry, your review could not be submitted. Please try again or contact us on WhatsApp.";
+        submitReviewBtn.disabled = false;
+        submitReviewBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Review';
+      }
+    });
+  </script>
+</body>
+</html>
