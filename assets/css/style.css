@@ -1428,3 +1428,11 @@ iframe {
     white-space: nowrap !important;
   }
 }
+
+/* Plain phone number on Get Quote contact card */
+.plain-contact-number {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+  margin: 6px 0 14px;
+}
