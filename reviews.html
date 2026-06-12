@@ -54,27 +54,14 @@
     </section>
 
     <section class="section">
-      <div class="container grid grid-3">
-        <article class="card">
-          <div class="review-stars">★★★★★</div>
-          <h3>Review coming soon</h3>
-          <p>Verified customer reviews will be displayed here after completed cleaning jobs.</p>
-          <p><strong>Service:</strong> Home Cleaning</p>
-        </article>
-
-        <article class="card">
-          <div class="review-stars">★★★★★</div>
-          <h3>Review coming soon</h3>
-          <p>Customer feedback will be added after completed jobs.</p>
-          <p><strong>Service:</strong> Office Cleaning</p>
-        </article>
-
-        <article class="card">
-          <div class="review-stars">★★★★★</div>
-          <h3>Review coming soon</h3>
-          <p>Customer reviews will appear here soon.</p>
-          <p><strong>Service:</strong> Car Cleaning</p>
-        </article>
+      <div class="container">
+        <div class="grid grid-3" id="reviewsGrid">
+          <article class="card">
+            <div class="review-stars">★★★★★</div>
+            <h3>Loading reviews...</h3>
+            <p>Please wait while we load verified customer reviews.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -82,7 +69,7 @@
       <div class="container band">
         <div>
           <h2>Used SureSpark Cleaning?</h2>
-          <p>Send your review on WhatsApp so we can verify and publish it.</p>
+          <p>Submit your review so we can verify and publish it.</p>
         </div>
         <a class="btn btn-primary" href="submit-review.html">Submit a Review</a>
       </div>
@@ -101,5 +88,98 @@
 </footer>
 
   <script src="assets/js/script.js"></script>
+  <script>
+    async function loadApprovedReviews() {
+      const reviewsGrid = document.getElementById("reviewsGrid");
+
+      if (!reviewsGrid) return;
+
+      try {
+        const response = await fetch("/api/get-reviews");
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error("Could not load reviews");
+        }
+
+        const reviews = data.reviews || [];
+
+        if (!reviews.length) {
+          reviewsGrid.innerHTML = `
+            <article class="card">
+              <div class="review-stars">★★★★★</div>
+              <h3>Review coming soon</h3>
+              <p>Verified customer reviews will be displayed here after completed cleaning jobs.</p>
+              <p><strong>Service:</strong> Home Cleaning</p>
+            </article>
+
+            <article class="card">
+              <div class="review-stars">★★★★★</div>
+              <h3>Review coming soon</h3>
+              <p>Customer feedback will be added after completed jobs.</p>
+              <p><strong>Service:</strong> Office Cleaning</p>
+            </article>
+
+            <article class="card">
+              <div class="review-stars">★★★★★</div>
+              <h3>Review coming soon</h3>
+              <p>Customer reviews will appear here soon.</p>
+              <p><strong>Service:</strong> Car Cleaning</p>
+            </article>
+          `;
+          return;
+        }
+
+        reviewsGrid.innerHTML = reviews.map((review) => {
+          const rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
+          const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
+
+          return `
+            <article class="card">
+              <div class="review-stars">${stars}</div>
+              <h3>${escapeHtml(review.customerName || "Verified Customer")}</h3>
+              <p>${escapeHtml(review.reviewText || "")}</p>
+              <p><strong>Service:</strong> ${escapeHtml(review.serviceUsed || "Cleaning Service")}</p>
+              ${review.location ? `<p><strong>Location:</strong> ${escapeHtml(review.location)}</p>` : ""}
+            </article>
+          `;
+        }).join("");
+      } catch (error) {
+        reviewsGrid.innerHTML = `
+          <article class="card">
+            <div class="review-stars">★★★★★</div>
+            <h3>Review coming soon</h3>
+            <p>Verified customer reviews will be displayed here after completed cleaning jobs.</p>
+            <p><strong>Service:</strong> Home Cleaning</p>
+          </article>
+
+          <article class="card">
+            <div class="review-stars">★★★★★</div>
+            <h3>Review coming soon</h3>
+            <p>Customer feedback will be added after completed jobs.</p>
+            <p><strong>Service:</strong> Office Cleaning</p>
+          </article>
+
+          <article class="card">
+            <div class="review-stars">★★★★★</div>
+            <h3>Review coming soon</h3>
+            <p>Customer reviews will appear here soon.</p>
+            <p><strong>Service:</strong> Car Cleaning</p>
+          </article>
+        `;
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    loadApprovedReviews();
+  </script>
 </body>
 </html>
