@@ -89,6 +89,29 @@
 
   <script src="assets/js/script.js"></script>
   <script>
+    const fallbackReviewCards = `
+      <article class="card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Review coming soon</h3>
+        <p>Verified customer reviews will be displayed here after completed cleaning jobs.</p>
+        <p><strong>Service:</strong> Home Cleaning</p>
+      </article>
+
+      <article class="card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Review coming soon</h3>
+        <p>Customer feedback will be added after completed jobs.</p>
+        <p><strong>Service:</strong> Office Cleaning</p>
+      </article>
+
+      <article class="card">
+        <div class="review-stars">★★★★★</div>
+        <h3>Review coming soon</h3>
+        <p>Customer reviews will appear here soon.</p>
+        <p><strong>Service:</strong> Car Cleaning</p>
+      </article>
+    `;
+
     async function loadApprovedReviews() {
       const reviewsGrid = document.getElementById("reviewsGrid");
 
@@ -105,32 +128,11 @@
         const reviews = data.reviews || [];
 
         if (!reviews.length) {
-          reviewsGrid.innerHTML = `
-            <article class="card">
-              <div class="review-stars">★★★★★</div>
-              <h3>Review coming soon</h3>
-              <p>Verified customer reviews will be displayed here after completed cleaning jobs.</p>
-              <p><strong>Service:</strong> Home Cleaning</p>
-            </article>
-
-            <article class="card">
-              <div class="review-stars">★★★★★</div>
-              <h3>Review coming soon</h3>
-              <p>Customer feedback will be added after completed jobs.</p>
-              <p><strong>Service:</strong> Office Cleaning</p>
-            </article>
-
-            <article class="card">
-              <div class="review-stars">★★★★★</div>
-              <h3>Review coming soon</h3>
-              <p>Customer reviews will appear here soon.</p>
-              <p><strong>Service:</strong> Car Cleaning</p>
-            </article>
-          `;
+          reviewsGrid.innerHTML = fallbackReviewCards;
           return;
         }
 
-        reviewsGrid.innerHTML = reviews.map((review) => {
+        const approvedReviewCards = reviews.map((review) => {
           const rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
           const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
 
@@ -144,29 +146,10 @@
             </article>
           `;
         }).join("");
+
+        reviewsGrid.innerHTML = approvedReviewCards + fallbackReviewCards;
       } catch (error) {
-        reviewsGrid.innerHTML = `
-          <article class="card">
-            <div class="review-stars">★★★★★</div>
-            <h3>Review coming soon</h3>
-            <p>Verified customer reviews will be displayed here after completed cleaning jobs.</p>
-            <p><strong>Service:</strong> Home Cleaning</p>
-          </article>
-
-          <article class="card">
-            <div class="review-stars">★★★★★</div>
-            <h3>Review coming soon</h3>
-            <p>Customer feedback will be added after completed jobs.</p>
-            <p><strong>Service:</strong> Office Cleaning</p>
-          </article>
-
-          <article class="card">
-            <div class="review-stars">★★★★★</div>
-            <h3>Review coming soon</h3>
-            <p>Customer reviews will appear here soon.</p>
-            <p><strong>Service:</strong> Car Cleaning</p>
-          </article>
-        `;
+        reviewsGrid.innerHTML = fallbackReviewCards;
       }
     }
 
