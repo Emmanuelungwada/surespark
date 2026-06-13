@@ -206,5 +206,105 @@
 </footer>
 
   <script src="assets/js/script.js"></script>
+
+  <script>
+    async function loadSanityGalleryItems() {
+      const galleryGrid = document.querySelector(".gallery-grid");
+
+      if (!galleryGrid) return;
+
+      try {
+        const response = await fetch("/api/get-gallery");
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          return;
+        }
+
+        const items = data.gallery || [];
+
+        if (!items.length) {
+          return;
+        }
+
+        const sanityCards = items.map((item) => {
+          const mediaType = item.mediaType || "image";
+          const category = item.category || "home";
+          const tag = item.tag || "Gallery";
+          const title = item.title || "Gallery Item";
+          const description = item.description || "";
+
+          let mediaHtml = "";
+
+          if (mediaType === "video" && item.videoUrl) {
+            mediaHtml = `
+              <video class="gallery-video" controls preload="metadata" playsinline ${item.thumbnailUrl ? `poster="${escapeGalleryHtml(item.thumbnailUrl)}"` : ""}>
+                <source src="${escapeGalleryHtml(item.videoUrl)}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            `;
+          } else if (item.imageUrl) {
+            mediaHtml = `
+              <img src="${escapeGalleryHtml(item.imageUrl)}" alt="${escapeGalleryHtml(title)}">
+            `;
+          } else {
+            return "";
+          }
+
+          return `
+            <article class="card image-card gallery-card sanity-gallery-card" data-category="${escapeGalleryHtml(category)}">
+              ${mediaHtml}
+              <div class="card-body">
+                <span class="gallery-card-tag">${escapeGalleryHtml(tag)}</span>
+                <h3>${escapeGalleryHtml(title)}</h3>
+                <p>${escapeGalleryHtml(description)}</p>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        galleryGrid.insertAdjacentHTML("beforeend", sanityCards);
+        reconnectGalleryFilters();
+      } catch (error) {
+        console.warn("Sanity gallery items could not be loaded.");
+      }
+    }
+
+    function reconnectGalleryFilters() {
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
+      filterButtons.forEach((button) => {
+        button.onclick = () => {
+          const filter = button.dataset.filter;
+          const cards = document.querySelectorAll(".gallery-card");
+
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          cards.forEach((card) => {
+            const category = card.dataset.category;
+
+            if (filter === "all" || category === filter) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        };
+      });
+    }
+
+    function escapeGalleryHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    loadSanityGalleryItems();
+  </script>
+
 </body>
 </html>

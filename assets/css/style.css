@@ -1436,3 +1436,17 @@ iframe {
   font-weight: 500;
   margin: 6px 0 14px;
 }
+
+/* Sanity uploaded gallery videos */
+.gallery-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  background: #0f172a;
+  border-radius: 18px 18px 0 0;
+}
+
+.sanity-gallery-card video {
+  max-width: 100%;
+}
