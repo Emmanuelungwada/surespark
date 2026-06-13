@@ -164,7 +164,7 @@ async function sendReviewNotification(review) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "SureSpark Cleaning <onboarding@resend.dev>",
+        from: "SureSpark Cleaning <notifications@suresparkcleaning.com>",
         to: REVIEW_NOTIFICATION_EMAIL,
         subject: "New review submitted - SureSpark Cleaning",
         html: emailHtml,
