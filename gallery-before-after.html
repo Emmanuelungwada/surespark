@@ -41,7 +41,6 @@
       <nav class="nav" data-nav>
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
-        <a href="equipment.html">Equipment</a>
         <a class="active" href="gallery.html">Gallery</a>
         <a href="reviews.html">Reviews</a>
         <a href="about.html">About</a>
@@ -75,16 +74,23 @@
             <span class="eyebrow"><i class="fa-solid fa-images"></i> Work Gallery</span>
             <h2>Before &amp; After Work</h2>
           </div>
-          <p>
-            Click any project to open a clear before and after comparison.
-          </p>
+          <p>Click any project to open a clear before and after comparison.</p>
         </div>
 
         <div class="grid grid-3 before-after-work-grid" id="beforeAfterGrid">
           <article class="card before-after-work-card">
+            <img src="assets/images/gallery/rug-after-cleaning.png" alt="Rug cleaning result">
             <div class="card-body">
-              <h3>Loading transformations...</h3>
-              <p>Please wait while we load the latest approved cleaning transformations.</p>
+              <span class="gallery-card-tag">Before &amp; After</span>
+              <h3>Rug Cleaning Result</h3>
+              <p>A real before-and-after cleaning result showing how deep cleaning can refresh the rug.</p>
+              <button class="btn btn-primary ba-open-btn" type="button"
+                data-title="Rug Cleaning Result"
+                data-description="A real before-and-after cleaning result showing how deep cleaning can refresh the rug."
+                data-before="assets/images/gallery/rug-before-cleaning.png"
+                data-after="assets/images/gallery/rug-after-cleaning.png">
+                View Before &amp; After
+              </button>
             </div>
           </article>
         </div>
@@ -176,7 +182,7 @@
   <script src="assets/js/script.js"></script>
 
   <script>
-    const beforeAfterGrid = document.getElementById("beforeAfterGrid");
+    const grid = document.getElementById("beforeAfterGrid");
     const modal = document.getElementById("beforeAfterModal");
     const modalClose = document.getElementById("baModalClose");
     const modalTitle = document.getElementById("baModalTitle");
@@ -184,15 +190,27 @@
     const beforeImage = document.getElementById("baBeforeImage");
     const afterImage = document.getElementById("baAfterImage");
 
-    async function loadBeforeAfterWork() {
-      if (!beforeAfterGrid) return;
+    function setupBeforeAfterButtons() {
+      document.querySelectorAll(".ba-open-btn").forEach((button) => {
+        button.onclick = () => {
+          modalTitle.textContent = button.dataset.title || "Cleaning Result";
+          modalDescription.textContent = button.dataset.description || "Professional cleaning transformation by SureSpark Cleaning.";
+          beforeImage.src = button.dataset.before;
+          afterImage.src = button.dataset.after;
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+        };
+      });
+    }
 
+    async function loadSanityBeforeAfter() {
       try {
         const response = await fetch("/api/get-gallery");
         const data = await response.json();
 
         if (!response.ok || !data.success || !Array.isArray(data.gallery)) {
-          throw new Error("Could not load gallery");
+          setupBeforeAfterButtons();
+          return;
         }
 
         const items = data.gallery.filter((item) => {
@@ -200,29 +218,20 @@
         });
 
         if (!items.length) {
-          beforeAfterGrid.innerHTML = `
-            <article class="card before-after-work-card">
-              <img src="assets/images/gallery/rug-after-cleaning.png" alt="Before and after cleaning result">
-              <div class="card-body">
-                <span class="gallery-card-tag">Before & After</span>
-                <h3>Before & After Work Coming Soon</h3>
-                <p>Approved transformation photos will appear here after they are uploaded.</p>
-              </div>
-            </article>
-          `;
+          setupBeforeAfterButtons();
           return;
         }
 
-        beforeAfterGrid.innerHTML = items.map((item, index) => {
+        const sanityCards = items.map((item) => {
           const title = item.title || "Cleaning Transformation";
           const description = item.description || "Professional cleaning transformation by SureSpark Cleaning.";
           const preview = item.afterImageUrl || item.beforeImageUrl;
 
           return `
-            <article class="card before-after-work-card" data-index="${index}">
+            <article class="card before-after-work-card">
               <img src="${escapeHtml(preview)}" alt="${escapeHtml(title)} result">
               <div class="card-body">
-                <span class="gallery-card-tag">Before & After</span>
+                <span class="gallery-card-tag">Before &amp; After</span>
                 <h3>${escapeHtml(title)}</h3>
                 <p>${escapeHtml(description)}</p>
                 <button class="btn btn-primary ba-open-btn" type="button"
@@ -230,34 +239,17 @@
                   data-description="${escapeHtml(description)}"
                   data-before="${escapeHtml(item.beforeImageUrl)}"
                   data-after="${escapeHtml(item.afterImageUrl)}">
-                  View Before & After
+                  View Before &amp; After
                 </button>
               </div>
             </article>
           `;
         }).join("");
 
-        document.querySelectorAll(".ba-open-btn").forEach((button) => {
-          button.addEventListener("click", () => {
-            modalTitle.textContent = button.dataset.title || "Cleaning Result";
-            modalDescription.textContent = button.dataset.description || "Professional cleaning transformation by SureSpark Cleaning.";
-            beforeImage.src = button.dataset.before;
-            afterImage.src = button.dataset.after;
-            modal.classList.add("open");
-            modal.setAttribute("aria-hidden", "false");
-          });
-        });
+        grid.insertAdjacentHTML("beforeend", sanityCards);
+        setupBeforeAfterButtons();
       } catch (error) {
-        beforeAfterGrid.innerHTML = `
-          <article class="card before-after-work-card">
-            <img src="assets/images/gallery/rug-after-cleaning.png" alt="Before and after cleaning result">
-            <div class="card-body">
-              <span class="gallery-card-tag">Before & After</span>
-              <h3>Before & After Work Coming Soon</h3>
-              <p>Approved transformation photos will appear here after they are uploaded.</p>
-            </div>
-          </article>
-        `;
+        setupBeforeAfterButtons();
       }
     }
 
@@ -271,9 +263,7 @@
     modalClose.addEventListener("click", closeModal);
 
     modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
+      if (event.target === modal) closeModal();
     });
 
     function escapeHtml(value) {
@@ -285,7 +275,7 @@
         .replaceAll("'", "&#039;");
     }
 
-    loadBeforeAfterWork();
+    loadSanityBeforeAfter();
   </script>
 </body>
 </html>

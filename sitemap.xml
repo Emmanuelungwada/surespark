@@ -36,4 +36,8 @@
     <loc>https://www.suresparkcleaning.com/gallery-before-after.html</loc>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://www.suresparkcleaning.com/gallery-site-photos.html</loc>
+    <priority>0.80</priority>
+  </url>
 </urlset>
