@@ -103,6 +103,16 @@ export const galleryItem = defineType({
     }),
 
     defineField({
+      name: 'thumbnailImage',
+      title: 'Thumbnail Image',
+      type: 'image',
+      options: {hotspot: true},
+      description:
+        'Optional preview image shown on the website card before visitors open the before and after comparison.',
+      hidden: ({parent}) => parent?.mediaType === 'video' || parent?.category !== 'before-after',
+    }),
+
+    defineField({
       name: 'videoUrl',
       title: 'Video URL',
       type: 'url',
@@ -163,8 +173,9 @@ export const galleryItem = defineType({
       image: 'image',
       beforeImage: 'beforeImage',
       afterImage: 'afterImage',
+      thumbnailImage: 'thumbnailImage',
     },
-    prepare({title, category, mediaType, image, beforeImage, afterImage}) {
+    prepare({title, category, mediaType, image, beforeImage, afterImage, thumbnailImage}) {
       return {
         title,
         subtitle:
@@ -173,7 +184,7 @@ export const galleryItem = defineType({
             : mediaType === 'video'
               ? 'Video'
               : 'Image',
-        media: afterImage || beforeImage || image,
+        media: thumbnailImage || afterImage || beforeImage || image,
       }
     },
   },

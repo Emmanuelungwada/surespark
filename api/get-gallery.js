@@ -22,6 +22,7 @@ export default async function handler(req, res) {
       "imageUrl": image.asset->url,
       "beforeImageUrl": beforeImage.asset->url,
       "afterImageUrl": afterImage.asset->url,
+      "thumbnailImageUrl": thumbnailImage.asset->url,
       videoUrl
     }`;
 

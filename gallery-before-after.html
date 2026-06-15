@@ -225,7 +225,7 @@
         const sanityCards = items.map((item) => {
           const title = item.title || "Cleaning Transformation";
           const description = item.description || "Professional cleaning transformation by SureSpark Cleaning.";
-          const preview = item.afterImageUrl || item.beforeImageUrl;
+          const preview = item.thumbnailImageUrl || item.afterImageUrl || item.beforeImageUrl;
 
           return `
             <article class="card before-after-work-card">
