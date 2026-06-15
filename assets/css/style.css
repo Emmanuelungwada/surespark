@@ -1598,3 +1598,74 @@ iframe {
     min-height: 145px;
   }
 }
+
+/* Before & After Gallery Cards */
+.before-after-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.before-after-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #0f2630;
+}
+
+.before-after-images > div {
+  position: relative;
+  overflow: hidden;
+}
+
+.before-after-images span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(15, 38, 48, 0.88);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.before-after-images img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-video-box {
+  min-height: 230px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #0f2630, #0f766e);
+  color: #ffffff;
+}
+
+.gallery-video-box a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .before-after-images img {
+    height: 145px;
+  }
+
+  .before-after-images span {
+    top: 7px;
+    left: 7px;
+    font-size: 0.58rem;
+    padding: 4px 8px;
+  }
+
+  .gallery-video-box {
+    min-height: 145px;
+  }
+}

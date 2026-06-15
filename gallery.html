@@ -62,10 +62,6 @@
           A preview of SureSpark Cleaning work, equipment, and cleaning results.
         </p>
       </div>
-
-      <div class="container" id="sanityGalleryWrap" style="margin-top: 28px;">
-        <div class="grid grid-3 gallery-grid" id="sanityGalleryGrid"></div>
-      </div>
     </section>
 
     <section class="section gallery-section-clean">
@@ -80,7 +76,7 @@
           <button class="filter-btn" data-filter="before-after">Before & After</button>
         </div>
 
-        <div class="grid grid-3 gallery-grid">
+        <div class="grid grid-3 gallery-grid" id="galleryGrid">
           <article class="card image-card gallery-card gallery-result-card" data-category="before-after">
             <img src="assets/images/gallery/rug-after-cleaning.png" alt="Rug cleaning result after deep cleaning">
             <div class="card-body">
@@ -211,94 +207,131 @@
 
   <script src="assets/js/script.js"></script>
 
-  <script>
-    async function loadSanityGalleryItems() {
-      const galleryGrid = document.querySelector(".gallery-grid");
+  
 
+  <script>
+    async function appendSanityGalleryItems() {
+      const galleryGrid = document.getElementById("galleryGrid");
       if (!galleryGrid) return;
 
       try {
         const response = await fetch("/api/get-gallery");
         const data = await response.json();
 
-        if (!response.ok || !data.success) {
+        if (!response.ok || !data.success || !Array.isArray(data.gallery)) {
           return;
         }
 
-        const items = data.gallery || [];
+        const items = data.gallery;
 
         if (!items.length) {
           return;
         }
 
         const sanityCards = items.map((item) => {
-          const mediaType = item.mediaType || "image";
-          const category = item.category || "home";
-          const tag = item.tag || "Gallery";
-          const title = item.title || "Gallery Item";
-          const description = item.description || "";
+          const category = item.category || "general";
+          const title = item.title || "Cleaning Result";
+          const tag = item.tag || formatGalleryCategory(category);
+          const description = item.description || "Professional cleaning result by SureSpark Cleaning.";
 
-          let mediaHtml = "";
+          if (category === "before-after") {
+            if (!item.beforeImageUrl || !item.afterImageUrl) {
+              return "";
+            }
 
-          if (mediaType === "video" && item.videoUrl) {
-            mediaHtml = `
-              <video class="gallery-video" controls preload="metadata" playsinline ${item.thumbnailUrl ? `poster="${escapeGalleryHtml(item.thumbnailUrl)}"` : ""}>
-                <source src="${escapeGalleryHtml(item.videoUrl)}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+            return `
+              <article class="card gallery-card before-after-card" data-category="before-after">
+                <div class="before-after-images">
+                  <div>
+                    <span>Before</span>
+                    <img src="${escapeHtml(item.beforeImageUrl)}" alt="${escapeHtml(title)} before">
+                  </div>
+                  <div>
+                    <span>After</span>
+                    <img src="${escapeHtml(item.afterImageUrl)}" alt="${escapeHtml(title)} after">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <span class="gallery-card-tag">Before & After</span>
+                  <h3>${escapeHtml(title)}</h3>
+                  <p>${escapeHtml(description)}</p>
+                </div>
+              </article>
             `;
-          } else if (item.imageUrl) {
-            mediaHtml = `
-              <img src="${escapeGalleryHtml(item.imageUrl)}" alt="${escapeGalleryHtml(title)}">
+          }
+
+          if (item.mediaType === "video" && item.videoUrl) {
+            return `
+              <article class="card gallery-card" data-category="${escapeHtml(category)}">
+                <div class="gallery-video-box">
+                  <a href="${escapeHtml(item.videoUrl)}" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-play"></i>
+                    Watch Video
+                  </a>
+                </div>
+                <div class="card-body">
+                  <span class="gallery-card-tag">${escapeHtml(tag)}</span>
+                  <h3>${escapeHtml(title)}</h3>
+                  <p>${escapeHtml(description)}</p>
+                </div>
+              </article>
             `;
-          } else {
+          }
+
+          if (!item.imageUrl) {
             return "";
           }
 
           return `
-            <article class="card image-card gallery-card sanity-gallery-card" data-category="${escapeGalleryHtml(category)}">
-              ${mediaHtml}
+            <article class="card gallery-card" data-category="${escapeHtml(category)}">
+              <img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(title)}">
               <div class="card-body">
-                <span class="gallery-card-tag">${escapeGalleryHtml(tag)}</span>
-                <h3>${escapeGalleryHtml(title)}</h3>
-                <p>${escapeGalleryHtml(description)}</p>
+                <span class="gallery-card-tag">${escapeHtml(tag)}</span>
+                <h3>${escapeHtml(title)}</h3>
+                <p>${escapeHtml(description)}</p>
               </div>
             </article>
           `;
         }).join("");
 
-        galleryGrid.insertAdjacentHTML("beforeend", sanityCards);
-        reconnectGalleryFilters();
+        if (sanityCards.trim()) {
+          galleryGrid.insertAdjacentHTML("afterbegin", sanityCards);
+        }
+
+        setupGalleryFilters();
       } catch (error) {
-        console.warn("Sanity gallery items could not be loaded.");
+        console.warn("Sanity gallery failed. Static gallery remains visible.");
       }
     }
 
-    function reconnectGalleryFilters() {
-      const filterButtons = document.querySelectorAll(".filter-btn");
+    function setupGalleryFilters() {
+      const buttons = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".gallery-card");
 
-      filterButtons.forEach((button) => {
+      buttons.forEach((button) => {
         button.onclick = () => {
-          const filter = button.dataset.filter;
-          const cards = document.querySelectorAll(".gallery-card");
-
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          buttons.forEach((btn) => btn.classList.remove("active"));
           button.classList.add("active");
 
-          cards.forEach((card) => {
-            const category = card.dataset.category;
+          const filter = button.dataset.filter || "all";
 
-            if (filter === "all" || category === filter) {
-              card.style.display = "";
-            } else {
-              card.style.display = "none";
-            }
+          cards.forEach((card) => {
+            card.style.display =
+              filter === "all" || card.dataset.category === filter
+                ? ""
+                : "none";
           });
         };
       });
     }
 
-    function escapeGalleryHtml(value) {
+    function formatGalleryCategory(category) {
+      return String(category || "")
+        .replaceAll("-", " ")
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    }
+
+    function escapeHtml(value) {
       return String(value || "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
@@ -307,8 +340,7 @@
         .replaceAll("'", "&#039;");
     }
 
-    loadSanityGalleryItems();
+    appendSanityGalleryItems();
   </script>
-
 </body>
 </html>
