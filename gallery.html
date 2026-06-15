@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Gallery | SureSpark Cleaning Nigeria</title>
-  <meta name="description" content="View SureSpark Cleaning gallery, before and after cleaning results, equipment photos, home cleaning, office cleaning and car cleaning work." />
+  <meta name="description" content="Browse SureSpark Cleaning gallery categories including before and after cleaning results, cleaning site photos, and equipment used." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Favicon & Social Preview -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="apple-touch-icon" href="assets/images/favicon.png" />
-  <meta property="og:title" content="SureSpark Cleaning | Professional Cleaning Services in Nigeria" />
-  <meta property="og:description" content="Home, office, deep cleaning, and car cleaning services delivered to your location across Nigeria." />
+
+  <meta property="og:title" content="SureSpark Cleaning Gallery | Cleaning Results in Nigeria" />
+  <meta property="og:description" content="View SureSpark Cleaning work categories including before and after transformations, cleaning site photos, and equipment." />
   <meta property="og:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
   <meta property="og:url" content="https://www.suresparkcleaning.com/gallery.html" />
   <meta property="og:type" content="website" />
+
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SureSpark Cleaning | Professional Cleaning Services in Nigeria" />
-  <meta name="twitter:description" content="Home, office, deep cleaning, and car cleaning services delivered to your location across Nigeria." />
+  <meta name="twitter:title" content="SureSpark Cleaning Gallery | Cleaning Results in Nigeria" />
+  <meta name="twitter:description" content="View SureSpark Cleaning work categories including before and after transformations, cleaning site photos, and equipment." />
   <meta name="twitter:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -53,119 +55,93 @@
     </div>
   </header>
 
-  <main class="gallery-page">
-    <section class="page-hero gallery-hero">
+  <main class="gallery-hub-page">
+    <section class="page-hero">
       <div class="container">
-        <span class="eyebrow">Cleaning site posts</span>
-        <h1>Cleaning gallery and results</h1>
+        <span class="eyebrow">Cleaning gallery</span>
+        <h1>Cleaning results and project albums</h1>
         <p class="lead">
-          A preview of SureSpark Cleaning work, equipment, and cleaning results.
+          Browse SureSpark Cleaning work by category instead of showing every upload on one long page.
         </p>
       </div>
     </section>
 
-    <section class="section gallery-section-clean">
+    <section class="section gallery-hub-section">
       <div class="container">
-
-        <div class="gallery-filter">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="home">Home Cleaning</button>
-          <button class="filter-btn" data-filter="office">Office Cleaning</button>
-          <button class="filter-btn" data-filter="car">Car Cleaning</button>
-          <button class="filter-btn" data-filter="equipment">Equipment</button>
-          <button class="filter-btn" data-filter="before-after">Before & After</button>
+        <div class="gallery-hub-intro">
+          <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Gallery Categories</span>
+          <h2>Choose what you want to view</h2>
+          <p class="lead">
+            Select a category to view related cleaning work, transformations, and equipment details.
+          </p>
         </div>
 
-        <div class="grid grid-3 gallery-grid" id="galleryGrid">
-          <article class="card image-card gallery-card gallery-result-card" data-category="before-after">
-            <img src="assets/images/gallery/rug-after-cleaning.png" alt="Rug cleaning result after deep cleaning">
-            <div class="card-body">
-              <span class="gallery-card-tag">Before & After Result</span>
-              <h3>Rug Cleaning Result</h3>
-              <p>A real before-and-after style result showing how deep cleaning can refresh the rug.</p>
+        <div class="gallery-hub-cards">
+          <article class="gallery-hub-card-v2 featured">
+            <img src="assets/images/gallery/office-cleaning.png" alt="Professional cleaning transformation results">
+            <div class="gallery-hub-card-overlay"></div>
+            <div class="gallery-hub-card-content-v2">
+              <span><i class="fa-solid fa-wand-magic-sparkles"></i> Transformations</span>
+              <h3>Before &amp; After Results</h3>
+              <p>
+                View real cleaning transformations uploaded by SureSpark Cleaning after completed jobs.
+              </p>
+              <a class="btn btn-primary" href="gallery-before-after.html">
+                View Transformations
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
 
-          <article class="card image-card gallery-card" data-category="equipment">
-            <img src="assets/images/equipment/window-cleaning-kit.png" alt="Window cleaning kit">
-            <div class="card-body">
-              <span class="gallery-card-tag">Equipment</span>
-              <h3>Window Cleaning Kit</h3>
-              <p>Used for windows, glass doors, mirrors and shower screens.</p>
+          <article class="gallery-hub-card-v2">
+            <img src="assets/images/gallery/office-cleaning.png" alt="Cleaning site photos">
+            <div class="gallery-hub-card-overlay"></div>
+            <div class="gallery-hub-card-content-v2">
+              <span><i class="fa-solid fa-camera"></i> Work Photos</span>
+              <h3>Cleaning Site Photos</h3>
+              <p>
+                Browse selected cleaning site photos from homes, offices, cars, and completed work.
+              </p>
+              <a class="btn btn-primary" data-whatsapp="gallery" target="_blank">
+                Send Photos
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </article>
 
-          <article class="card image-card gallery-card" data-category="equipment">
-            <img src="assets/images/equipment/pressure-washer.png" alt="Pressure washer">
-            <div class="card-body">
-              <span class="gallery-card-tag">Equipment</span>
-              <h3>Pressure Washer</h3>
-              <p>Used for outdoor surfaces, car washing, tiles and heavy dirt.</p>
-            </div>
-          </article>
-
-          <article class="card image-card gallery-card" data-category="equipment">
-            <img src="assets/images/equipment/floor-scrubber.png" alt="Electric floor scrubber">
-            <div class="card-body">
-              <span class="gallery-card-tag">Equipment</span>
-              <h3>Electric Floor Scrubber</h3>
-              <p>Used for tiled floors, bathroom floors and hard-surface scrubbing.</p>
-            </div>
-          </article>
-
-          <article class="card image-card gallery-card" data-category="home">
-            <img src="assets/images/equipment/upholstery-cleaner.png" alt="Upholstery cleaning machine">
-            <div class="card-body">
-              <span class="gallery-card-tag">Home Cleaning</span>
-              <h3>Upholstery Cleaning</h3>
-              <p>Used for sofas, rugs, carpets, chairs and fabric surfaces.</p>
-            </div>
-          </article>
-
-          <article class="card image-card gallery-card" data-category="office">
-            <img src="assets/images/equipment/mop-floor-cleaning-kit.png" alt="Mop and floor cleaning kit">
-            <div class="card-body">
-              <span class="gallery-card-tag">Office Cleaning</span>
-              <h3>Mop & Floor Cleaning Kit</h3>
-              <p>Used for home, office and indoor floor cleaning.</p>
-            </div>
-          </article>
-
-          <article class="card image-card gallery-card" data-category="car">
-            <img src="assets/images/equipment/car-wash-pressure-cleaning-kit.png" alt="Car wash cleaning kit">
-            <div class="card-body">
-              <span class="gallery-card-tag">Car Cleaning</span>
-              <h3>Car Wash Cleaning Kit</h3>
-              <p>Used for exterior washing, wheels, mats and vehicle finishing.</p>
-            </div>
-          </article>
-
-          <article class="card image-card gallery-card" data-category="office">
-            <img src="assets/images/gallery/office-cleaning.png" alt="Clean office after professional cleaning">
-            <div class="card-body">
-              <span class="gallery-card-tag">Office Cleaning</span>
-              <h3>Office Cleaning Result</h3>
-              <p>A clean and organized office space after professional cleaning.</p>
+          <article class="gallery-hub-card-v2">
+            <img src="assets/images/equipment/pressure-washer.png" alt="Professional cleaning equipment">
+            <div class="gallery-hub-card-overlay"></div>
+            <div class="gallery-hub-card-content-v2">
+              <span><i class="fa-solid fa-screwdriver-wrench"></i> Equipment</span>
+              <h3>Equipment Used</h3>
+              <p>
+                See the cleaning machines and tools used for different cleaning services.
+              </p>
+              <a class="btn btn-primary" href="equipment.html">
+                View Equipment
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="band gallery-upload-band">
-          <div>
-            <span class="eyebrow">Gallery uploads</span>
-            <h2>Want to show your cleaning site photos here?</h2>
-            <p>
-              Send real photos, before/after images, equipment photos or short video links
-              through WhatsApp. More photos can be added soon.
-            </p>
-          </div>
-
-          <a class="btn btn-primary" data-whatsapp="gallery" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i>
-            Send Photos on WhatsApp
-          </a>
+    <section class="section section-soft">
+      <div class="container band">
+        <div>
+          <span class="eyebrow">Gallery uploads</span>
+          <h2>Want to show your cleaning site photos here?</h2>
+          <p>
+            Send real photos, before/after images, equipment photos or short video links through WhatsApp.
+          </p>
         </div>
 
+        <a class="btn btn-primary" data-whatsapp="gallery" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i>
+          Send Photos on WhatsApp
+        </a>
       </div>
     </section>
   </main>
@@ -202,145 +178,10 @@
     <div class="container footer-bottom">
       <p>© 2026 SureSpark Cleaning. Professional Cleaning Services in Nigeria.</p>
     </div>
+
     <p class="footer-credit">Designed &amp; developed by <a href="https://anwarhegazy-porfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Anwar Hegazy</a></p>
-</footer>
+  </footer>
 
   <script src="assets/js/script.js"></script>
-
-  
-
-  <script>
-    async function appendSanityGalleryItems() {
-      const galleryGrid = document.getElementById("galleryGrid");
-      if (!galleryGrid) return;
-
-      try {
-        const response = await fetch("/api/get-gallery");
-        const data = await response.json();
-
-        if (!response.ok || !data.success || !Array.isArray(data.gallery)) {
-          return;
-        }
-
-        const items = data.gallery;
-
-        if (!items.length) {
-          return;
-        }
-
-        const sanityCards = items.map((item) => {
-          const category = item.category || "general";
-          const title = item.title || "Cleaning Result";
-          const tag = item.tag || formatGalleryCategory(category);
-          const description = item.description || "Professional cleaning result by SureSpark Cleaning.";
-
-          if (category === "before-after") {
-            if (!item.beforeImageUrl || !item.afterImageUrl) {
-              return "";
-            }
-
-            return `
-              <article class="card gallery-card before-after-card" data-category="before-after">
-                <div class="before-after-images">
-                  <div>
-                    <span>Before</span>
-                    <img src="${escapeHtml(item.beforeImageUrl)}" alt="${escapeHtml(title)} before">
-                  </div>
-                  <div>
-                    <span>After</span>
-                    <img src="${escapeHtml(item.afterImageUrl)}" alt="${escapeHtml(title)} after">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <span class="gallery-card-tag">Before & After</span>
-                  <h3>${escapeHtml(title)}</h3>
-                  <p>${escapeHtml(description)}</p>
-                </div>
-              </article>
-            `;
-          }
-
-          if (item.mediaType === "video" && item.videoUrl) {
-            return `
-              <article class="card gallery-card" data-category="${escapeHtml(category)}">
-                <div class="gallery-video-box">
-                  <a href="${escapeHtml(item.videoUrl)}" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-solid fa-play"></i>
-                    Watch Video
-                  </a>
-                </div>
-                <div class="card-body">
-                  <span class="gallery-card-tag">${escapeHtml(tag)}</span>
-                  <h3>${escapeHtml(title)}</h3>
-                  <p>${escapeHtml(description)}</p>
-                </div>
-              </article>
-            `;
-          }
-
-          if (!item.imageUrl) {
-            return "";
-          }
-
-          return `
-            <article class="card gallery-card" data-category="${escapeHtml(category)}">
-              <img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(title)}">
-              <div class="card-body">
-                <span class="gallery-card-tag">${escapeHtml(tag)}</span>
-                <h3>${escapeHtml(title)}</h3>
-                <p>${escapeHtml(description)}</p>
-              </div>
-            </article>
-          `;
-        }).join("");
-
-        if (sanityCards.trim()) {
-          galleryGrid.insertAdjacentHTML("afterbegin", sanityCards);
-        }
-
-        setupGalleryFilters();
-      } catch (error) {
-        console.warn("Sanity gallery failed. Static gallery remains visible.");
-      }
-    }
-
-    function setupGalleryFilters() {
-      const buttons = document.querySelectorAll(".filter-btn");
-      const cards = document.querySelectorAll(".gallery-card");
-
-      buttons.forEach((button) => {
-        button.onclick = () => {
-          buttons.forEach((btn) => btn.classList.remove("active"));
-          button.classList.add("active");
-
-          const filter = button.dataset.filter || "all";
-
-          cards.forEach((card) => {
-            card.style.display =
-              filter === "all" || card.dataset.category === filter
-                ? ""
-                : "none";
-          });
-        };
-      });
-    }
-
-    function formatGalleryCategory(category) {
-      return String(category || "")
-        .replaceAll("-", " ")
-        .replace(/\b\w/g, (letter) => letter.toUpperCase());
-    }
-
-    function escapeHtml(value) {
-      return String(value || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    appendSanityGalleryItems();
-  </script>
 </body>
 </html>
