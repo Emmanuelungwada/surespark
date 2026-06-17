@@ -34,10 +34,28 @@ My review:
 Thank you.`
 };
 
-function openWhatsApp(type = "quote") {
-  const message = whatsappMessages[type] || whatsappMessages.quote;
+function openWhatsApp(type = "quote", customMessage = "") {
+  const message = customMessage || whatsappMessages[type] || whatsappMessages.quote;
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
+}
+
+function buildQuoteWhatsAppMessage(formData) {
+  return `Hello SureSpark Cleaning, I need a cleaning quote.
+
+Full name: ${formData.name}
+Phone / WhatsApp: ${formData.phone}
+Email: ${formData.email || "Not provided"}
+City / Area: ${formData.city}
+Service needed: ${formData.service}
+Property type: ${formData.property || "Not provided"}
+Preferred date: ${formData.date || "Not provided"}
+Preferred time: ${formData.time || "Not provided"}
+
+Cleaning details:
+${formData.details}
+
+I will send photos/videos of the space now.`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,6 +106,64 @@ document.addEventListener("DOMContentLoaded", () => {
       openWhatsApp(type);
     });
   });
+
+  const quoteForm = document.getElementById("quoteForm");
+
+  if (quoteForm) {
+    quoteForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const submitBtn = quoteForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitBtn ? submitBtn.innerHTML : "";
+
+      const formData = {
+        name: quoteForm.name.value.trim(),
+        phone: quoteForm.phone.value.trim(),
+        email: quoteForm.email.value.trim(),
+        city: quoteForm.city.value.trim(),
+        service: quoteForm.service.value,
+        property: quoteForm.property.value,
+        date: quoteForm.date.value,
+        time: quoteForm.time.value,
+        details: quoteForm.details.value.trim()
+      };
+
+      const whatsappMessage = buildQuoteWhatsAppMessage(formData);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending request...';
+      }
+
+      try {
+        const response = await fetch("/api/submit-quote", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          alert(result.message || "Could not send email. WhatsApp will still open.");
+        } else {
+          alert("Your quote request has been sent by email. WhatsApp will now open so you can send photos/videos.");
+        }
+      } catch (error) {
+        console.error("Quote form error:", error);
+        alert("Email could not be sent right now. WhatsApp will still open.");
+      } finally {
+        openWhatsApp("quote", whatsappMessage);
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalButtonText;
+        }
+      }
+    });
+  }
 
   const filterButtons = document.querySelectorAll("[data-filter]");
   const galleryCards = document.querySelectorAll("[data-category]");
