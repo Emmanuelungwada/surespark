@@ -165,31 +165,39 @@
   <script src="assets/js/script.js"></script>
 
   <script>
-    function getYouTubeEmbedUrl(url) {
-      if (!url) return "";
-
+    function getYouTubeVideoId(url = "") {
       try {
         const parsed = new URL(url);
 
         if (parsed.hostname.includes("youtu.be")) {
-          const id = parsed.pathname.replace("/", "").split("?")[0];
-          return id ? `https://www.youtube.com/embed/${id}` : "";
+          return parsed.pathname.replace("/", "").split("?")[0].trim();
         }
 
         if (parsed.hostname.includes("youtube.com")) {
           if (parsed.pathname.includes("/shorts/")) {
-            const id = parsed.pathname.split("/shorts/")[1]?.split("?")[0];
-            return id ? `https://www.youtube.com/embed/${id}` : "";
+            return parsed.pathname.split("/shorts/")[1]?.split("?")[0] || "";
           }
 
-          const id = parsed.searchParams.get("v");
-          return id ? `https://www.youtube.com/embed/${id}` : "";
-        }
+          const v = parsed.searchParams.get("v");
+          if (v) return v;
 
-        return url;
+          const parts = parsed.pathname.split("/");
+          const embedIndex = parts.indexOf("embed");
+          if (embedIndex !== -1 && parts[embedIndex + 1]) {
+            return parts[embedIndex + 1];
+          }
+        }
       } catch (error) {
-        return url;
+        return "";
       }
+
+      return "";
+    }
+
+    function getYouTubeThumbnail(url = "") {
+      const videoId = getYouTubeVideoId(url);
+      if (!videoId) return "";
+      return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     }
 
     function formatCategory(category) {
@@ -219,45 +227,42 @@
       const imageUrl = item.imageUrl || item.thumbnailUrl || item.thumbnailImageUrl || "";
 
       const card = document.createElement("article");
-      card.className = "card image-card sanity-gallery-card";
+      card.className = "card image-card sanity-gallery-card gallery-card";
 
       if (mediaType === "video" && videoUrl) {
-        const embedUrl = getYouTubeEmbedUrl(videoUrl);
+        const thumbnailUrl = getYouTubeThumbnail(videoUrl) || "assets/images/social-preview.png";
 
-        if (embedUrl.includes("youtube.com/embed/")) {
-          card.innerHTML = `
-            <div class="gallery-video-embed">
-              <iframe src="${embedUrl}" title="${title}" loading="lazy" allowfullscreen></iframe>
+        card.innerHTML = `
+          <a class="gallery-card-media gallery-video-thumb" href="${videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${title}">
+            <img src="${thumbnailUrl}" alt="${title}">
+            <span class="gallery-video-badge">
+              <i class="fa-solid fa-video"></i>
+              Video
+            </span>
+            <div class="gallery-video-play">
+              <span><i class="fa-solid fa-play"></i></span>
             </div>
-            <div class="card-body">
-              <span class="gallery-card-tag">${category}</span>
-              <h3>${title}</h3>
-              <p>${description}</p>
-            </div>
-          `;
-        } else {
-          card.innerHTML = `
-            <div class="gallery-video-box">
-              <a href="${videoUrl}" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-play"></i>
-                Watch Video
-              </a>
-            </div>
-            <div class="card-body">
-              <span class="gallery-card-tag">${category}</span>
-              <h3>${title}</h3>
-              <p>${description}</p>
-            </div>
-          `;
-        }
+          </a>
+          <div class="card-body gallery-card-content">
+            <span class="gallery-card-tag">${category}</span>
+            <h3>${title}</h3>
+            <p>${description}</p>
+            <a class="btn btn-outline gallery-video-link" href="${videoUrl}" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-play"></i>
+              Watch Video
+            </a>
+          </div>
+        `;
 
         return card;
       }
 
       if (imageUrl) {
         card.innerHTML = `
-          <img src="${imageUrl}" alt="${title}">
-          <div class="card-body">
+          <div class="gallery-card-media">
+            <img src="${imageUrl}" alt="${title}">
+          </div>
+          <div class="card-body gallery-card-content">
             <span class="gallery-card-tag">${category}</span>
             <h3>${title}</h3>
             <p>${description}</p>
