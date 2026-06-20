@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Cleaning Site Photos | SureSpark Cleaning Nigeria</title>
-  <meta name="description" content="View selected cleaning site photos from SureSpark Cleaning completed work in Nigeria." />
+  <meta name="description" content="View selected cleaning site photos and videos from SureSpark Cleaning completed work in Nigeria." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,16 +15,20 @@
   <link rel="apple-touch-icon" href="assets/images/favicon.png" />
 
   <meta property="og:title" content="Cleaning Site Photos | SureSpark Cleaning" />
-  <meta property="og:description" content="Browse selected cleaning site photos from completed SureSpark Cleaning work." />
+  <meta property="og:description" content="Browse selected cleaning site photos and videos from completed SureSpark Cleaning work." />
   <meta property="og:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
   <meta property="og:url" content="https://www.suresparkcleaning.com/gallery-site-photos.html" />
   <meta property="og:type" content="website" />
 
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cleaning Site Photos | SureSpark Cleaning" />
+  <meta name="twitter:description" content="Browse selected cleaning site photos and videos from completed SureSpark Cleaning work." />
+  <meta name="twitter:image" content="https://www.suresparkcleaning.com/assets/images/social-preview.png" />
+
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
-  <a class="whatsapp-float" data-whatsapp="quote" target="_blank" aria-label="Chat with SureSpark Cleaning on WhatsApp">
+  <a class="whatsapp-float" data-whatsapp="quote" target="_blank" aria-label="Message SureSpark Cleaning on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -32,6 +36,7 @@
     <div class="container nav-wrap">
       <a href="index.html" class="logo">
         <img class="logo-img" src="assets/images/logo.png" alt="SureSpark Cleaning logo">
+        <div><span class="logo-main">SureSpark</span><span class="logo-sub">Cleaning</span></div>
       </a>
 
       <button class="menu-btn" data-menu-btn aria-label="Open menu">
@@ -54,9 +59,7 @@
       <div class="container">
         <span class="eyebrow">Cleaning site photos</span>
         <h1>Completed cleaning work</h1>
-        <p class="lead">
-          Browse selected photos from SureSpark Cleaning work across homes, offices, cars, and cleaning sites.
-        </p>
+        <p class="lead">Browse selected photos and videos from SureSpark Cleaning work across homes, offices, cars, and cleaning sites.</p>
 
         <div class="btn-row">
           <a class="btn btn-outline" href="gallery.html">
@@ -68,47 +71,49 @@
     </section>
 
     <section class="section">
-      <div class="container grid grid-3">
-        <article class="card image-card gallery-card">
-          <img src="assets/images/gallery/office-cleaning.png" alt="Office cleaning result">
-          <div class="card-body">
-            <span class="gallery-card-tag">Office Cleaning</span>
-            <h3>Office Cleaning Result</h3>
-            <p>A clean and organized office space after professional cleaning.</p>
-          </div>
-        </article>
+      <div class="container">
+        <div class="grid grid-3" id="sitePhotosGrid">
+          <article class="card image-card">
+            <img src="assets/images/gallery/office-cleaning.png" alt="Office cleaning result">
+            <div class="card-body">
+              <span class="gallery-card-tag">Office Cleaning</span>
+              <h3>Office Cleaning Result</h3>
+              <p>A clean and organized office space after professional cleaning.</p>
+            </div>
+          </article>
 
-        <article class="card image-card gallery-card">
-          <img src="assets/images/equipment/car-wash-pressure-cleaning-kit.png" alt="Car cleaning result">
-          <div class="card-body">
-            <span class="gallery-card-tag">Car Cleaning</span>
-            <h3>Car Cleaning Result</h3>
-            <p>Exterior washing and vehicle cleaning preparation.</p>
-          </div>
-        </article>
+          <article class="card image-card">
+            <img src="assets/images/equipment/car-wash-pressure-cleaning-kit.png" alt="Car cleaning work">
+            <div class="card-body">
+              <span class="gallery-card-tag">Car Cleaning</span>
+              <h3>Car Cleaning Result</h3>
+              <p>Exterior washing and vehicle cleaning preparation.</p>
+            </div>
+          </article>
 
-        <article class="card image-card gallery-card">
-          <img src="assets/images/equipment/mop-floor-cleaning-kit.png" alt="Floor cleaning result">
-          <div class="card-body">
-            <span class="gallery-card-tag">Floor Cleaning</span>
-            <h3>Floor Cleaning Work</h3>
-            <p>Indoor floor cleaning tools and completed work presentation.</p>
-          </div>
-        </article>
+          <article class="card image-card">
+            <img src="assets/images/equipment/mop-floor-cleaning-kit.png" alt="Floor cleaning work">
+            <div class="card-body">
+              <span class="gallery-card-tag">Floor Cleaning</span>
+              <h3>Floor Cleaning Work</h3>
+              <p>Indoor floor cleaning tools and completed work presentation.</p>
+            </div>
+          </article>
+        </div>
+
+        <div id="sanityGalleryNotice" class="notice" style="display:none; margin-top: 24px;"></div>
       </div>
     </section>
 
     <section class="section section-soft">
-      <div class="container band">
-        <div>
-          <h2>Want to request a cleaning service?</h2>
-          <p>Send your details and photos so SureSpark Cleaning can review your request.</p>
+      <div class="container">
+        <div class="band">
+          <div>
+            <h2>Want to request a cleaning service?</h2>
+            <p>Send your details and photos so SureSpark Cleaning can review your request.</p>
+          </div>
+          <a class="btn btn-primary" href="contact.html">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-
-        <a class="btn btn-primary" href="contact.html">
-          Get a Quote
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
       </div>
     </section>
   </main>
@@ -137,8 +142,8 @@
 
       <div>
         <h3>Contact</h3>
-        <p><a href="tel:+2348108444009">+234 810 844 4009</a></p>
-        <p><a href="mailto:info@suresparkcleaning.com">info@suresparkcleaning.com</a></p>
+        <p><a href="tel:+2348108444009"><i class="fa-solid fa-phone"></i> +234 810 844 4009</a></p>
+        <p><a href="mailto:info@suresparkcleaning.com"><i class="fa-solid fa-envelope"></i> info@suresparkcleaning.com</a></p>
         <div class="footer-socials">
           <a class="footer-social-link facebook" href="https://www.facebook.com/profile.php?id=61590548254204" target="_blank" rel="noopener noreferrer" aria-label="SureSpark Cleaning on Facebook">
             <i class="fa-brands fa-facebook-f"></i>
@@ -158,5 +163,141 @@
   </footer>
 
   <script src="assets/js/script.js"></script>
+
+  <script>
+    function getYouTubeEmbedUrl(url) {
+      if (!url) return "";
+
+      try {
+        const parsed = new URL(url);
+
+        if (parsed.hostname.includes("youtu.be")) {
+          const id = parsed.pathname.replace("/", "").split("?")[0];
+          return id ? `https://www.youtube.com/embed/${id}` : "";
+        }
+
+        if (parsed.hostname.includes("youtube.com")) {
+          if (parsed.pathname.includes("/shorts/")) {
+            const id = parsed.pathname.split("/shorts/")[1]?.split("?")[0];
+            return id ? `https://www.youtube.com/embed/${id}` : "";
+          }
+
+          const id = parsed.searchParams.get("v");
+          return id ? `https://www.youtube.com/embed/${id}` : "";
+        }
+
+        return url;
+      } catch (error) {
+        return url;
+      }
+    }
+
+    function formatCategory(category) {
+      if (!category) return "Cleaning Work";
+
+      return category
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    }
+
+    function shouldShowOnSitePhotos(item) {
+      const category = String(item.category || "").toLowerCase();
+
+      if (category.includes("before")) return false;
+      if (category.includes("after")) return false;
+      if (category.includes("equipment")) return false;
+
+      return true;
+    }
+
+    function createSanityCard(item) {
+      const title = item.title || "Cleaning Work";
+      const category = formatCategory(item.category);
+      const description = item.description || "Completed SureSpark Cleaning work.";
+      const mediaType = String(item.mediaType || "").toLowerCase();
+      const videoUrl = item.videoUrl || "";
+      const imageUrl = item.imageUrl || item.thumbnailUrl || item.thumbnailImageUrl || "";
+
+      const card = document.createElement("article");
+      card.className = "card image-card sanity-gallery-card";
+
+      if (mediaType === "video" && videoUrl) {
+        const embedUrl = getYouTubeEmbedUrl(videoUrl);
+
+        if (embedUrl.includes("youtube.com/embed/")) {
+          card.innerHTML = `
+            <div class="gallery-video-embed">
+              <iframe src="${embedUrl}" title="${title}" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <span class="gallery-card-tag">${category}</span>
+              <h3>${title}</h3>
+              <p>${description}</p>
+            </div>
+          `;
+        } else {
+          card.innerHTML = `
+            <div class="gallery-video-box">
+              <a href="${videoUrl}" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-play"></i>
+                Watch Video
+              </a>
+            </div>
+            <div class="card-body">
+              <span class="gallery-card-tag">${category}</span>
+              <h3>${title}</h3>
+              <p>${description}</p>
+            </div>
+          `;
+        }
+
+        return card;
+      }
+
+      if (imageUrl) {
+        card.innerHTML = `
+          <img src="${imageUrl}" alt="${title}">
+          <div class="card-body">
+            <span class="gallery-card-tag">${category}</span>
+            <h3>${title}</h3>
+            <p>${description}</p>
+          </div>
+        `;
+
+        return card;
+      }
+
+      return null;
+    }
+
+    async function loadSanitySitePhotos() {
+      const grid = document.getElementById("sitePhotosGrid");
+      const notice = document.getElementById("sanityGalleryNotice");
+
+      if (!grid) return;
+
+      try {
+        const response = await fetch("/api/get-gallery");
+        const data = await response.json();
+
+        const items = Array.isArray(data.gallery) ? data.gallery : [];
+        const visibleItems = items.filter(shouldShowOnSitePhotos);
+
+        visibleItems.forEach((item) => {
+          const card = createSanityCard(item);
+          if (card) grid.prepend(card);
+        });
+      } catch (error) {
+        console.error("Could not load Sanity site photos:", error);
+
+        if (notice) {
+          notice.style.display = "block";
+          notice.textContent = "Some uploaded gallery items could not be loaded right now.";
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadSanitySitePhotos);
+  </script>
 </body>
 </html>
